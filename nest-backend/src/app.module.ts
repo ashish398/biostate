@@ -8,19 +8,27 @@ import { LoggingMiddleware } from './middleware/logging.middleware';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'ashishjain',
-      password: 'ashish.398',
-      database: 'biostate_db',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
     }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        url: configService.get<string>('DATABASE_URL'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+        ssl: {
+          rejectUnauthorized: false, // Allows connection even if SSL certificates are self-signed
+        },
+      }),
+      inject: [ConfigService],
+    }),
+
     CacheModule.register({
       isGlobal: true,
       ttl: 50, // Default time-to-live (in seconds)

@@ -36,11 +36,7 @@ Install Dependencies:
 npm install
 ```
 
-Configure Environment Variables:
-
-PORT=3001
-DATABASE_URL=<your-database-url>
-Replace <your-database-url> and <your-jwt-secret> with your specific values.
+- .env file is included in the repo for quick setup:
 
 Running the Server:
 
@@ -63,9 +59,6 @@ Install Dependencies:
 ```bash
 npm install
 ```
-
-Configure Environment Variables:
-REACT_APP_API_URL=http://localhost:3000
 
 Running the Client:
 

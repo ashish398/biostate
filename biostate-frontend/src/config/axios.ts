@@ -1,8 +1,10 @@
 import axios, { AxiosError } from "axios";
 
 const instance = axios.create({
-  baseURL: `http://localhost:3001/api`,
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   withCredentials: true,
+  xsrfCookieName: "XSRF-TOKEN", // The name of the CSRF token cookie (set by the server)
+  xsrfHeaderName: "X-CSRF-Token",
 });
 
 instance.interceptors.request.use(

@@ -1,4 +1,3 @@
-// binary-trees.service.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { BinaryTreesService, TreeNode } from './binary-trees.service';
 import { getRepositoryToken } from '@nestjs/typeorm';

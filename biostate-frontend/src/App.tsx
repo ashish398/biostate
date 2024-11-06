@@ -7,13 +7,13 @@ import NavBar from "./components/NavBar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PrivateRoute from "./components/PrivateRoute";
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import UserDashboard from "./pages/UserDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./redux/slices/themeSlice";
 import { RootState } from "./redux/store";
 import { AuthContext } from "./context/AuthContext";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.theme);

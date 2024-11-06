@@ -80,17 +80,14 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
           </div>
         </div>
 
-        {/* Desktop links */}
         <DesktopLinks isOpen={isOpen} closeMenu={() => setIsOpen(false)} />
       </div>
 
-      {/* Mobile dropdown menu */}
       {isOpen && <MobileLinks closeMenu={toggleMenu} />}
     </nav>
   );
 };
 
-// Component for desktop links
 const DesktopLinks: React.FC<{ isOpen: boolean; closeMenu: () => void }> = ({
   isOpen,
   closeMenu,
@@ -110,7 +107,6 @@ const DesktopLinks: React.FC<{ isOpen: boolean; closeMenu: () => void }> = ({
   </div>
 );
 
-// Component for mobile links
 const MobileLinks: React.FC<{ closeMenu: () => void }> = ({ closeMenu }) => (
   <div className="md:hidden bg-blue-700 text-white">
     {navLinks.map((link) => (

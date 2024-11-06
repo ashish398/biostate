@@ -76,23 +76,6 @@ describe("SubstringForm", () => {
     );
   });
 
-  //   it("submits the form when input is valid", async () => {
-  //     render(<SubstringForm onSubmit={mockOnSubmit} isLoading={false} />);
-
-  //     const inputElement = screen.getByLabelText(/Enter a string/i);
-  //     const formElement = screen.getByRole("form", { name: /substring form/i }); // Use the form element
-
-  //     await act(async () => {
-  //       fireEvent.change(inputElement, { target: { value: "ValidString123!" } });
-  //       fireEvent.submit(formElement); // Trigger submit on the form element
-  //     });
-
-  //     expect(mockOnSubmit).toHaveBeenCalledTimes(1);
-  //     expect(mockOnSubmit).toHaveBeenCalledWith({
-  //       inputString: "ValidString123!",
-  //     });
-  //   });
-
   it("disables the submit button when isLoading is true", () => {
     render(<SubstringForm onSubmit={mockOnSubmit} isLoading={true} />);
 

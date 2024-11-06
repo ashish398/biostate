@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
+import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
 
 async function bootstrap() {
@@ -18,9 +18,14 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
-  // app.use(csurf());
+
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://biostate.vercel.app/',
+  ];
+
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: allowedOrigins,
     credentials: true,
   });
 

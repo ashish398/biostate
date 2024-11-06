@@ -1,4 +1,3 @@
-// substrings/substrings.module.ts
 import { Module } from '@nestjs/common';
 import { SubstringsService } from './substrings.service';
 import { SubstringsController } from './substrings.controller';

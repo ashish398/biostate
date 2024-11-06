@@ -1,4 +1,3 @@
-// substrings/substrings.service.ts
 import { Injectable } from '@nestjs/common';
 import { Substring } from './substring.entity';
 import { Repository } from 'typeorm';

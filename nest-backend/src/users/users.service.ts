@@ -1,4 +1,3 @@
-// users/users.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User, UserRole } from './user.entity';

@@ -1,6 +1,5 @@
-// useTreeConversion.ts
 import { useMutation } from "react-query";
-import { calculateMaxPathLeaf, postPathSum } from "../api/post";
+import { postPathSum } from "../api/post";
 
 export type TreeNode = {
   name: string;
@@ -35,12 +34,6 @@ export const useTreeConversion = () => {
   const mutation = useMutation((binaryTree: (number | null)[]) =>
     calculatePathSums(binaryTree)
   );
-
-  // const maxAnyMutaion = useMutation((binaryTree: any) =>
-  //   calculatePathSums(binaryTree)
-  // );
-
-  // const maxLeafMutaion = useMutation((binaryTree: any) => () => {calculateMaxPathLeaf()});
 
   return { arrayToTree, mutation };
 };
