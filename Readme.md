@@ -150,6 +150,9 @@ NOTE: Taking the other node as - any node **down** from which is the leaf node
 ## BONUS SECTION ATTEMPTED:
 
 1. The tree builder is interactive, zoomable and has advanced visualisations
+
 2. Created a simple admin to see all the project users and change the permissions - right now open for all
+
 3. Added simple keyboard shortcuts for faster tree building
+
 4. Added a toggle for light and dark theme switch
