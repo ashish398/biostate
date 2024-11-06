@@ -21,12 +21,14 @@ async function bootstrap() {
 
   const allowedOrigins = [
     'http://localhost:3000',
+    'https://biostate.vercel.app',
     'https://biostate.vercel.app/',
   ];
 
   app.enableCors({
     origin: allowedOrigins,
     credentials: true,
+    allowedHeaders: 'Content-Type, Authorization, X-CSRF-Token',
   });
 
   await app.listen(3001);
