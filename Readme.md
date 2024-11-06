@@ -78,3 +78,50 @@ The React app will start on http://localhost:3000 by default.
 Running the Full Stack Application
 Ensure both the NestJS server and React client are running.
 Open your browser and go to http://localhost:3000 to view the application.
+
+## Algorithms used:
+
+### 1. max length unique substring:
+
+1. Used sliding window technique, while maintaining a set of visited characters
+2. Space complexity - O(N) and Time Complexity - O(N), where N is length of string
+
+### 2. max sum path between any two nodes:
+
+1. Uses recursive depth-first search (DFS) to compute maximum branch sums and paths at each node
+2. Updates the global maximum path sum and corresponding node path when a higher sum is found, considering both straight and split paths
+3. Space complexity O(N) and time complexity O(N), where N is the number of nodes in the tree
+
+### 3. max sum path between a leaf node and any other node:
+
+NOTE: Taking the other node as - any node **down** from which is the leaf node
+
+1. Performs a recursive post-order traversal to compute maximum sum paths from any node down to a leaf node.
+2. Updates the global maximum sum and path when a higher sum path ending at a leaf node is found from any starting node.
+3. Space complexity O(N) and time complexity O(N), where N is the number of nodes in the tree
+
+## NON OBVIOUS DESIGN CHOICES:
+
+1. Using React Query for server state management:
+
+- Instead of using Redux toolkit for api calling and state management, I am using React Query which.
+- It is more optimised for api calling with out of the box caching and optimised querying
+
+2. Using d3 js tree builder:
+
+- For binary tree I am using d3.js tree builder, which gives out of the box tree skeleton for further customisation
+
+3. Using Auth as Guard instead of Middleware
+
+- Nest js recommends using guard instead of middleware for authentication and authorisation
+
+4. Using Redux to handle load in tree
+
+- this was done just to demonstrate the understanding of redux and could be also handled by context
+
+## BONUS SECTION ATTEMPTED:
+
+1. The tree builder is interactive, zoomable and has advanced visualisations
+2. Created a simple admin to see all the project users and change the permissions - right now open for all
+3. Added simple keyboard shortcuts for faster tree building
+4. Added a toggle for light and dark theme switch

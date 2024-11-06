@@ -15,13 +15,12 @@ const TreeWrapper: React.FC<TreeWrapperProps> = ({
   highlightedNodes,
   handleNodeClick,
 }) => {
-  console.log("highlighted nodes", highlightedNodes);
   return (
     <div style={{ width: "100%", height: "500px" }} id="treeWrapper">
       <Tree
         data={d3TreeData}
         orientation="vertical"
-        translate={{ x: 400, y: 50 }}
+        translate={{ x: window.innerWidth <= 768 ? 200 : 500, y: 50 }}
         zoomable={true}
         collapsible={false}
         transitionDuration={500}

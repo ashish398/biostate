@@ -33,14 +33,12 @@ const UserHistory: React.FC = () => {
 
   return (
     <div
-      className="p-4 bg-white dark:bg-gray-900 text-black dark:text-white h-screen flex flex-col overflow-y-scroll max-h-[85%]"
+      className="p-4 h-screen flex flex-col"
       role="region"
       aria-label="User Calculation History"
     >
       <h1 className="text-2xl font-bold mb-1">User Calculation History</h1>
-      <p className="italic text-xs text-gray-200 mb-4">
-        (Click tile to expand)
-      </p>
+      <p className="italic text-xs mb-4">(Click tile to expand)</p>
       {data && data.length > 0 ? (
         <div className="space-y-4">
           {data.map((entry: any, index: number) => (

@@ -42,7 +42,7 @@ const UserHistory: React.FC<UserHistoryProps> = ({ setTab }) => {
   };
 
   return (
-    <div className="p-4 bg-white dark:bg-gray-900 text-black dark:text-white h-screen flex flex-col overflow-y-scroll max-h-[85%]">
+    <div className="p-4  h-screen flex flex-col ">
       <h1 className="text-2xl font-bold mb-1">User History</h1>
       {data && data.length > 0 ? (
         <div className="space-y-4">
@@ -50,7 +50,7 @@ const UserHistory: React.FC<UserHistoryProps> = ({ setTab }) => {
             return (
               <div
                 key={entry.id || index}
-                className="bg-gray-100 dark:bg-gray-800 rounded shadow-sm flex flex-col p-2"
+                className={`bg-gray-100 dark:bg-gray-800 rounded shadow-sm flex flex-col p-2`}
               >
                 <h4 className="text-lg">
                   <span className="font-semibold">Input:</span>

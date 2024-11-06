@@ -17,31 +17,44 @@ export class BinaryTreesService {
 
     const dfs = (
       node: TreeNode | null,
-      currentSum: number,
-      path: TreeNode[],
-    ): void => {
-      if (!node) return;
-
-      currentSum += node.value;
-      path.push(node);
-
-      if (!node.left && !node.right) {
-        if (currentSum > maxSum) {
-          maxSum = currentSum;
-          maxPath = [...path];
-        }
+    ): { maxSumFromNode: number; pathFromNode: TreeNode[] } => {
+      if (!node) {
+        return { maxSumFromNode: -Infinity, pathFromNode: [] };
       }
 
-      dfs(node.left, currentSum, path);
-      dfs(node.right, currentSum, path);
-      path.pop();
+      if (!node.left && !node.right) {
+        if (node.value > maxSum) {
+          maxSum = node.value;
+          maxPath = [node];
+        }
+        return { maxSumFromNode: node.value, pathFromNode: [node] };
+      }
+
+      const left = dfs(node.left);
+      const right = dfs(node.right);
+      let maxChildSum = left.maxSumFromNode;
+      let pathFromNode = left.pathFromNode;
+
+      if (right.maxSumFromNode > left.maxSumFromNode) {
+        maxChildSum = right.maxSumFromNode;
+        pathFromNode = right.pathFromNode;
+      }
+
+      const maxSumFromNode = node.value + maxChildSum;
+      const currentPath = [node, ...pathFromNode];
+
+      if (maxSumFromNode > maxSum) {
+        maxSum = maxSumFromNode;
+        maxPath = currentPath;
+      }
+
+      return { maxSumFromNode, pathFromNode: currentPath };
     };
 
-    dfs(root, 0, []);
+    dfs(root);
     return { sum: maxSum, path: maxPath };
   }
 
-  // New implementation for maxPathSum
   maxPathSumAny(root: TreeNode): { sum: number; path: TreeNode[] } {
     let maxSum = -Infinity;
     let maxPath: TreeNode[] = [];

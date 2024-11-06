@@ -167,6 +167,9 @@ const TreeBuilder: React.FC<TreeBuilderProps> = ({ defaultInput }) => {
       {maxSum !== null && (
         <div className="mt-2">
           <strong>Maximum Sum:</strong> {maxSum}
+          <span className="text-xs italic ml-2">
+            path highlighted by yellow nodes
+          </span>
         </div>
       )}
       <TreeActions

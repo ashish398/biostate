@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ThemeToggle from "../components/ThemeToggle";
-import TreeBuilder from "../components/TreeBuilder/TreeBuilder";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <h1 className="text-4xl font-bold mb-8 text-center">
         Welcome to the Biostate Challenge
       </h1>
-
-      {/* <TreeBuilder /> */}
 
       <div className="flex flex-col md:flex-row gap-4">
         <Link
@@ -32,10 +28,6 @@ const HomePage: React.FC = () => {
         >
           Users Dashboard
         </Link>
-      </div>
-
-      <div className="mt-8">
-        <ThemeToggle />
       </div>
     </div>
   );

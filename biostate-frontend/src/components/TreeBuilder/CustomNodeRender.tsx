@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 interface CustomNodeRendererProps {
   nodeDatum: any;
@@ -15,6 +17,7 @@ const CustomNodeRenderer: React.FC<CustomNodeRendererProps> = ({
 }) => {
   const isHighlighted = highlightedNodes.includes(nodeDatum.attributes.id);
   const isSelected = selectedNode?.attributes?.id === nodeDatum.attributes.id;
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   return (
     <g>
@@ -26,9 +29,9 @@ const CustomNodeRenderer: React.FC<CustomNodeRendererProps> = ({
         onClick={() => handleNodeClick(nodeDatum)}
       />
       <text
-        fill="white"
+        fill={theme === "dark" ? "white" : "black"}
         strokeWidth="1"
-        stroke="white"
+        stroke={theme === "dark" ? "white" : "black"}
         x="20"
         onClick={() => handleNodeClick(nodeDatum)}
       >

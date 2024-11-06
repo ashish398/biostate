@@ -7,7 +7,7 @@ const BinaryTreePage: React.FC = () => {
   const [tab, setTab] = useState<"new" | "history">("new");
 
   return (
-    <div className="p-4 bg-white dark:bg-gray-900 text-black dark:text-white h-screen">
+    <div className="p-4 h-screen">
       <SubTabs tab={tab} setTab={setTab} />
 
       {tab === "new" && <NewCalculation />}

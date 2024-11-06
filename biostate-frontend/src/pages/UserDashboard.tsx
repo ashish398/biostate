@@ -1,4 +1,3 @@
-// src/components/Dashboard.tsx
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { fetchAllUsers } from "../api/get";
@@ -42,29 +41,50 @@ const UserDashboard: React.FC = () => {
 
   if (isLoading) return <div className="text-center p-4">Loading...</div>;
   if (error)
-    return <div className="text-red-500 p-4">Error loading users.</div>;
+    return (
+      <div className="text-red-500 dark:text-red-400 p-4">
+        Error loading users.
+      </div>
+    );
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        User Dashboard
+      </h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-gray-200">
+        <table className="min-w-full bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
+          <thead className="bg-gray-200 dark:bg-gray-700">
             <tr>
-              <th className="py-2 px-4 text-left">Username</th>
-              <th className="py-2 px-4 text-left">Email</th>
-              <th className="py-2 px-4 text-left">Role</th>
-              <th className="py-2 px-4 text-left">Actions</th>
+              <th className="py-2 px-4 text-left text-gray-800 dark:text-gray-200">
+                Username
+              </th>
+              <th className="py-2 px-4 text-left text-gray-800 dark:text-gray-200">
+                Email
+              </th>
+              <th className="py-2 px-4 text-left text-gray-800 dark:text-gray-200">
+                Role
+              </th>
+              <th className="py-2 px-4 text-left text-gray-800 dark:text-gray-200">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
             {users?.map((user) => (
-              <tr key={user.id} className="border-t">
-                <td className="py-2 px-4">{user.username}</td>
-                <td className="py-2 px-4">{user.email}</td>
+              <tr
+                key={user.id}
+                className="border-t border-gray-300 dark:border-gray-600"
+              >
+                <td className="py-2 px-4 text-gray-800 dark:text-gray-200">
+                  {user.username}
+                </td>
+                <td className="py-2 px-4 text-gray-800 dark:text-gray-200">
+                  {user.email}
+                </td>
                 <td className="py-2 px-4">
                   <select
-                    className="border rounded p-1"
+                    className="border rounded p-1 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                     value={selectedRole[user.id] || user.role}
                     onChange={(e) =>
                       handleRoleChange(user.id, e.target.value as UserRole)
@@ -77,7 +97,7 @@ const UserDashboard: React.FC = () => {
                 <td className="py-2 px-4">
                   <button
                     onClick={() => handleSave(user.id)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                    className="bg-blue-500 dark:bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-600 dark:hover:bg-blue-700"
                   >
                     Save
                   </button>

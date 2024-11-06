@@ -1,4 +1,4 @@
-import { House, Network, WholeWord } from "lucide-react";
+import { House, Moon, Network, Sun, User, WholeWord } from "lucide-react";
 import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
@@ -14,11 +14,20 @@ const navLinks = [
     label: "Substring Page",
     icon: <WholeWord size={16} />,
   },
+  {
+    path: "/dashboard",
+    label: "User Dashboard",
+    icon: <User size={16} />,
+  },
 ];
 
-const NavBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavBarProps {
+  toggleTheme: () => void;
+  theme: string;
+}
 
+const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
 
   return (
@@ -31,30 +40,44 @@ const NavBar: React.FC = () => {
         >
           Biostate.AI
         </Link>
-
-        {/* Hamburger icon for mobile */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            aria-label="Toggle navigation menu"
-            aria-expanded={isOpen}
-            className="focus:outline-none"
+        <div className="flex flex-row justify-center items-center gap-4">
+          <div
+            className="flex flex-row justify-center items-center gap-2 cursor-pointer"
+            onClick={toggleTheme}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              className={
+                "flex items-center justify-center w-8 h-8 bg-gray-700 dark:bg-white dark:text-yellow-500 rounded-full text-white md:ml-4"
+              }
+              aria-label="Toggle Theme"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
+              {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+            </button>
+            <p className="hidden md:block font-semibold">Toggle Theme</p>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isOpen}
+              className="focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Desktop links */}
