@@ -44,7 +44,7 @@ const Register: React.FC = () => {
         aria-labelledby="registerTitle"
       >
         <h2 id="registerTitle" className="text-2xl mb-4 text-center">
-          Register
+          BiostateAI Register
         </h2>
         <div className="mb-4">
           <label htmlFor="username" className="block mb-1">

@@ -1,9 +1,8 @@
-// users.controller.int.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { UsersModule } from './users.module'; // Make sure UsersModule is correctly imported
-import { AuthModule } from '../auth/auth.module'; // Import AuthModule to mock authentication
+import { UsersModule } from './users.module';
+import { AuthModule } from '../auth/auth.module';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 describe('UsersController (e2e)', () => {
@@ -11,12 +10,11 @@ describe('UsersController (e2e)', () => {
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [UsersModule, AuthModule], // Include Users and Auth modules
+      imports: [UsersModule, AuthModule],
     })
       .overrideGuard(JwtAuthGuard)
       .useValue({
         canActivate: (context) => {
-          // Mock the guard to always allow access
           return true;
         },
       })
@@ -37,14 +35,13 @@ describe('UsersController (e2e)', () => {
         .expect(200);
 
       expect(Array.isArray(response.body)).toBe(true);
-      // You can add more checks to validate the structure of the user objects
     });
   });
 
   describe('/users/:id/role (PUT)', () => {
     it('should update the user role and return the updated user', async () => {
-      const userId = 1; // Example user ID, update as needed
-      const role = 'manager'; // Example role, ensure it's valid based on your `UserRole` enum
+      const userId = 1;
+      const role = 'manager';
 
       const response = await request(app.getHttpServer())
         .put(`/users/${userId}/role`)

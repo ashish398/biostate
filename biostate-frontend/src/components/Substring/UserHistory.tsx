@@ -71,7 +71,7 @@ const UserHistory: React.FC = () => {
                   role="region"
                   aria-labelledby={`result-panel-${index}`}
                 >
-                  <Results result={entry} />
+                  <Results result={entry} isHistory={true} />
                 </div>
               )}
             </div>

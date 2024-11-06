@@ -1,11 +1,8 @@
-// src/context/AuthContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { JwtPayload, jwtDecode } from "jwt-decode";
 
-//TODO: Handling logout if token expires
-
 interface AuthContextType {
-  user: JwtPayload | null; // Specify the user as JwtPayload or null
+  user: JwtPayload | null;
   authTokens: string | null;
   loginUser: (token: string) => void;
   logoutUser: () => void;

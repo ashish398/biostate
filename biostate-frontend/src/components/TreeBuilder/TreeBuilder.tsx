@@ -10,8 +10,6 @@ interface TreeBuilderProps {
   defaultInput: any;
 }
 
-//TODO: Delete node is not working
-
 const TreeBuilder: React.FC<TreeBuilderProps> = ({ defaultInput }) => {
   const [treeData, setTreeData] = useState<TreeNode>(
     defaultInput || new TreeNode(10)
@@ -122,19 +120,20 @@ const TreeBuilder: React.FC<TreeBuilderProps> = ({ defaultInput }) => {
       return;
     }
 
-    const removeNode = (node: TreeNode | null, parent: TreeNode | null) => {
-      if (!node || !parent) return;
-      if (node.id === selectedNode.attributes.id) {
-        if (parent.left && parent.left.id === node.id) parent.left = null;
-        if (parent.right && parent.right.id === node.id) parent.right = null;
+    const removeNode = (node: TreeNode | null) => {
+      if (!node) return;
+      if (node.left && node.left.id === selectedNode.attributes.id) {
+        node.left = null;
+      } else if (node.right && node.right.id === selectedNode.attributes.id) {
+        node.right = null;
       } else {
-        removeNode(node.left, node);
-        removeNode(node.right, node);
+        removeNode(node.left);
+        removeNode(node.right);
       }
     };
 
     const newTreeData = { ...treeData };
-    removeNode(newTreeData, null);
+    removeNode(newTreeData);
     setTreeData(newTreeData);
     setSelectedNode(null);
   };

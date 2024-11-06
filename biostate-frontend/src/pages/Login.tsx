@@ -44,7 +44,7 @@ const Login: FC = () => {
         aria-labelledby="loginTitle"
       >
         <h2 id="loginTitle" className="text-2xl mb-4 text-center">
-          Login
+          BiostateAI Login
         </h2>
         <div className="mb-4">
           <label htmlFor="usernameOrEmail" className="block mb-1">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SubstringPage from "./pages/SubstringPage";
@@ -13,10 +13,12 @@ import UserDashboard from "./pages/UserDashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./redux/slices/themeSlice";
 import { RootState } from "./redux/store";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme.theme);
   const dispatch = useDispatch();
+  const { user } = useContext(AuthContext);
 
   const handleToggleTheme = () => {
     dispatch(toggleTheme());
@@ -37,7 +39,7 @@ function App() {
       }`}
     >
       <Router>
-        <NavBar toggleTheme={handleToggleTheme} theme={theme} />
+        {user && <NavBar toggleTheme={handleToggleTheme} theme={theme} />}
 
         <Routes>
           <Route path="/" element={<Login />} />

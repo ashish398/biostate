@@ -100,7 +100,33 @@ NOTE: Taking the other node as - any node **down** from which is the leaf node
 2. Updates the global maximum sum and path when a higher sum path ending at a leaf node is found from any starting node.
 3. Space complexity O(N) and time complexity O(N), where N is the number of nodes in the tree
 
-## NON OBVIOUS DESIGN CHOICES:
+## TESTING:
+
+### Backend Unit test
+
+1. Covered calculation of length of longest unique substring
+2. Covered calculation of max path from any node to any node
+3. Covered calculation of max path from leaf node to any node
+
+### Backend Integration test
+
+1. Added integration test for complete User controller
+
+- getting all users
+- changing user permissions
+
+### Frontend Unit test
+
+1. Added unit test for substring length calculation form
+
+### Cypress e2e test and Visual Regression test
+
+1. Added for Registration Screen
+2. Added for Signin Screen
+
+### Cypress e2e test
+
+## DESIGN CHOICES:
 
 1. Using React Query for server state management:
 
@@ -118,6 +144,8 @@ NOTE: Taking the other node as - any node **down** from which is the leaf node
 4. Using Redux to handle load in tree
 
 - this was done just to demonstrate the understanding of redux and could be also handled by context
+
+5. Using swagger for api documentation
 
 ## BONUS SECTION ATTEMPTED:
 

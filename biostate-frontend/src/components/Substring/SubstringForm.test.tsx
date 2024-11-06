@@ -1,4 +1,4 @@
-// SubstringForm.test.tsx
+/* eslint-disable testing-library/no-unnecessary-act */
 import React from "react";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
